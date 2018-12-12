@@ -860,20 +860,25 @@
           var footerBtn = "";
 
           //渲染sheet标签
-          for(var sheet = 0; sheet<SheetsAry.length;sheet++){
 
-            if(sheet ==0){
+          if(SheetsAry.length>1){
 
-              labelLiHTML +="<li data-sheet = '"+(Number(sheet))+"' class = 'active'>"+SheetsAry[sheet].sheet+"</li>"
+            for(var sheet = 0; sheet<SheetsAry.length;sheet++){
 
-            }else{
+              if(sheet ==0){
 
-              labelLiHTML +="<li data-sheet = '"+(Number(sheet))+"'>"+SheetsAry[sheet].sheet+"</li>"
+                labelLiHTML +="<li data-sheet = '"+(Number(sheet))+"' class = 'active'>"+SheetsAry[sheet].sheet+"</li>"
+
+              }else{
+
+                labelLiHTML +="<li data-sheet = '"+(Number(sheet))+"'>"+SheetsAry[sheet].sheet+"</li>"
+
+              }
 
             }
 
           }
-
+          
           labelul.innerHTML = "";
 
           labelul.innerHTML = labelLiHTML;
@@ -1483,15 +1488,20 @@
             var labelLiHTML = '';
 
             //渲染sheet标签
-            for(var sheet = 0; sheet<SheetsAry.length;sheet++){
 
-              if(sheet ==0){
+            if(SheetsAry.length>1){
 
-                labelLiHTML +="<li data-sheet = '"+(Number(sheet))+"' class = 'active'>"+SheetsAry[sheet].sheet+"</li>"
+              for(var sheet = 0; sheet<SheetsAry.length;sheet++){
 
-              }else{
+                if(sheet ==0){
 
-                labelLiHTML +="<li data-sheet = '"+(Number(sheet))+"'>"+SheetsAry[sheet].sheet+"</li>"
+                  labelLiHTML +="<li data-sheet = '"+(Number(sheet))+"' class = 'active'>"+SheetsAry[sheet].sheet+"</li>"
+
+                }else{
+
+                  labelLiHTML +="<li data-sheet = '"+(Number(sheet))+"'>"+SheetsAry[sheet].sheet+"</li>"
+
+                }
 
               }
 
