@@ -1,0 +1,150 @@
+<!--
+ -  2018/11/29  lize
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="./css/excel.css">
+    <script src = "./dist/xlsx.full.min.js"></script>
+    <script src = "Regular_Tmplate.js"></script>
+    <script src = "ExcelImportAndExport.js"></script>
+</head>
+
+<body>
+
+    <div id = "box" style="width:100px;height:40px;"></div>
+    <div id = "boxs" onclick="download()" style="width:100px;height:40px;"></div>
+    <div id = "test" style="width:100px;height:40px;"></div>
+</body>
+</html>
+<script>
+
+    var asds = [{name:4353}]
+
+    var asd = new ExcelImport({
+
+        el:'box',
+
+        succColor:'gray',
+
+        errColor:'red',
+
+        ImportImgUrl:'./img/moveUp.png',
+
+        // ExcelRegulation:[
+        //
+        //     {
+        //
+        //         index:0,
+        //
+        //         reg:[
+        //
+        //             {
+        //
+        //                 name: "len10"
+        //
+        //             },
+        //
+        //         ]
+        //
+        //     },
+        //     {
+        //
+        //         index: 1,
+        //
+        //         reg:[
+        //
+        //             {
+        //
+        //                 name:"isEmail"
+        //
+        //             }
+        //
+        //         ]
+        //
+        //     },
+        //
+        // ],
+
+        ExcelRegulation:[],
+
+        success:function(e){
+
+            console.log(e,'我是页面,正确函数');
+
+            asds = e;
+
+        },
+        error:function(er){
+
+            console.log(er,'我是页面,错误函数');
+
+        }
+
+    });
+
+    var ert = new ExcelExport({
+
+        el:'boxs',
+
+        ExcelExportData:asd,
+
+        success:function(e){
+
+            console.log(e);
+            //下载成功回调
+
+        },
+
+        error:function(er){
+
+            console.log(er);
+
+            //下载失败回调
+
+        }
+
+    })
+
+    //点击下载
+    function download(){
+
+        ert.exportExcel(asds)
+
+    }
+
+    // var view = document.getElementById("test");
+    // var data = {};
+    // var i=0;
+    //
+    // Object.defineProperty(data, "b", {
+    //
+    //     set: function(newValue) {
+    //
+    //         //当data.b的值改变的时候更新＃test的视图
+    //
+    //         view.textContent=newValue;
+    //
+    //     },
+    //
+    //     get: function() {
+    //
+    //     }
+    //
+    // });
+
+    // setInterval(function(){
+    //
+    //     var obj = {
+    //
+    //         name:i,
+    //
+    //         }
+    //
+    //         // asd.push(obj);
+    //     i++;
+    //
+    // },1000);
+</script>
